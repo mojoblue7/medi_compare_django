@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-5">
+        <h3>성분</h3>
+        <table class="table col-15">
+            <thead class="thead-dark">
+                <th scope="row">성분</th>
+            </thead>
+            <tbody class="tbody-light">
+            {% for ingredient in ingredientList %}
+                <tr>
+                    <td>{{ ingredient }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </ul>
+    </div>
+</div>
+{% endblock %}

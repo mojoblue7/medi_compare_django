@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ingredient.views import index
+from ingredient.views import IngredientListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index),
+    path('ingredient/', IngredientListView.as_view())
 ]
