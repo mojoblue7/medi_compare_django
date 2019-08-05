@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from ingredient.views import index
 from ingredient.views import IngredientListView
+from ingredient.views import IngredientNameListView
+from ingredient.views import IngredientUnitListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('ingredient/list/', IngredientListView.as_view())
+    path('ingredient/list/', IngredientListView.as_view()),
+    path('ingredient_name/list/', IngredientNameListView.as_view()),
+    path('ingredient_unit/list/', IngredientUnitListView.as_view())
 ]
