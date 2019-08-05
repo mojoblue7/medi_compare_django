@@ -21,5 +21,5 @@ from ingredient.views import IngredientListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('ingredient/', IngredientListView.as_view())
+    path('ingredient/list/', IngredientListView.as_view())
 ]
