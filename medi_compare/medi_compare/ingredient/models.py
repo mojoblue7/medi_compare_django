@@ -9,7 +9,7 @@ class Ingredient(models.Model):
     ingredient_unit = models.ForeignKey('Ingredient_unit', on_delete=models.PROTECT)
     
     def __str__(self):
-        return self.ingredient_name.ingredient_name + " " + str(self.volume) + self.ingredient_unit
+        return self.ingredient_name.ingredient_name + " " + str(self.ingredient_volume) + self.ingredient_unit.ingredient_unit
         
     class Meta():
         db_table = 'ingredient'
@@ -22,6 +22,7 @@ class Ingredient_name(models.Model):
 
     def __str__(self):
         return self.ingredient_name    
+
     class Meta():
         db_table = 'ingredient_name'
         verbose_name = '성분이름'
@@ -32,6 +33,7 @@ class Ingredient_unit(models.Model):
     
     def __str__(self):
         return self.ingredient_unit 
+        
     class Meta():
         db_table = 'ingredient_unit'
         verbose_name = '성분단위'
