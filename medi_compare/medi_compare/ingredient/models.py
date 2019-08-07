@@ -4,6 +4,7 @@ from django.db import models
 
 class Ingredient(models.Model):
     ingredient_name = models.ForeignKey('Ingredient_name', on_delete=models.CASCADE)
+    ingredient_class = models.ForeignKey('Ingredient_class', default='null', on_delete = models.PROTECT)
     ingredient_detail_content = models.TextField(blank=True, verbose_name = "성분상세내용")
     ingredient_volume = models.IntegerField(default=0, verbose_name="성분함량")
     ingredient_unit = models.ForeignKey('Ingredient_unit', on_delete=models.PROTECT)
@@ -17,16 +18,26 @@ class Ingredient(models.Model):
         verbose_name_plural = '성분'
 
 class Ingredient_name(models.Model):
-    ingredient_name = models.CharField(max_length=80 ,verbose_name="성분이름")
-    ingredient_class = models.CharField(max_length=80, verbose_name="성분분류")
+    ingredient_name = models.CharField(max_length=80,verbose_name="성분이름")
 
     def __str__(self):
-        return self.ingredient_name    
+        return self.ingredient_name
 
     class Meta():
         db_table = 'ingredient_name'
         verbose_name = '성분이름'
         verbose_name_plural = '성분이름'
+
+class Ingredient_class(models.Model):
+    ingredient_class = models.CharField(max_length=50, verbose_name="성분분류")
+
+    def __str__(self):
+        return self.ingredient_class   
+
+    class Meta():
+        db_table = 'ingredient_class'
+        verbose_name = '성분분류'
+        verbose_name_plural = '성분분류'
         
 class Ingredient_unit(models.Model):
     ingredient_unit = models.CharField(max_length=10, verbose_name="성분단위")

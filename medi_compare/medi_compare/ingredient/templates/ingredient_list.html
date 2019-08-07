@@ -1,30 +1,38 @@
 {% extends "base.html" %}
 {% block contents %}
 <div class="row mt-5">
-    <div class="col-8">
-        <table class="table col-10">
-            <thead class="thead-dark">
+    <div class="col-12">
+        <table class="table col-12 table-striped">
+            <thead class=" thead-dark">
                 <tr>
                     <th scope="col">No.</th>
-                    <th scope="col">성분</th>
+                    <th scope="col">성분명</th>
+                    <th scope="col">성분 분류</th>
                     <th scope="col">용량</th>
                     <th scope="col">단위</th>
+                    <th scope="col">세부 내용</th>
                 </tr>
             </thead>
             <tbody class="tbody">
                 {% for ingredient in ingredientList %}
                 <tr>
-                    <th scope="row"> 
+                    <th scope="row">
                         {{ ingredient.id }}
                     </th>
-                    <td>
+                    <td scope="col">
                         {{ ingredient.ingredient_name }}
                     </td>
-                    <td>
+                    <td scope="col">
+                        {{ ingredient.ingredient_class }}
+                    </td>
+                    <td scope="col">
                         {{ ingredient.ingredient_volume }}
                     </td>
-                    <td>
+                    <td scope="col">
                         {{ ingredient.ingredient_unit }}
+                    </td>
+                    <td scope="col">
+                        {{ ingredient.ingredient_detail_content }}
                     </td>
                 </tr>
                 {% endfor %}
