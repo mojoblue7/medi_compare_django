@@ -24,5 +24,5 @@ urlpatterns = [
     path('ingredient/list/', IngredientListView.as_view()),
     path('ingredient_name/list/', IngredientNameListView.as_view()),
     path('ingredient_unit/list/', IngredientUnitListView.as_view()),
-    path('ingredient_unit/list/', IngredientClassListView.as_view()),
+    path('ingredient_class/list/', IngredientClassListView.as_view()),
 ]

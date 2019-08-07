@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="row mt-5">
+
+    <div class="col-auto">
+        <button type="button" class="btn btn-success">성분 분류 추가</button>
+    </div>
+    <div class="col">
+        <table class="table col-5 table-striped">
+            <thead class="thead-dark">
+                <th scope="col-auto">No.</th>
+                <th scope="col-auto">성분 분류</th>
+            </thead>
+
+            <tbody class="tbody">
+                {% for ingredient_class in ingredientClassList %}
+                <tr>
+                    <th scope="row">
+                        {{ ingredient_class.id }}
+                    </th>
+                    <td>
+                        {{ ingredient_class.ingredient_class }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </ul>
+    </div>
+</div>
+{% endblock %}

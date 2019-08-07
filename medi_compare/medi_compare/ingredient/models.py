@@ -18,34 +18,34 @@ class Ingredient(models.Model):
         verbose_name_plural = '성분'
 
 class Ingredient_name(models.Model):
-    ingredient_name = models.CharField(max_length=80,verbose_name="성분이름")
+    ingredient_name = models.CharField(max_length=80,verbose_name="성분 이름")
 
     def __str__(self):
         return self.ingredient_name
 
     class Meta():
         db_table = 'ingredient_name'
-        verbose_name = '성분이름'
-        verbose_name_plural = '성분이름'
+        verbose_name = '성분 이름'
+        verbose_name_plural = '성분 이름'
 
 class Ingredient_class(models.Model):
-    ingredient_class = models.CharField(max_length=50, verbose_name="성분분류")
+    ingredient_class = models.CharField(max_length=50, verbose_name="성분 분류")
 
     def __str__(self):
         return self.ingredient_class   
 
     class Meta():
         db_table = 'ingredient_class'
-        verbose_name = '성분분류'
-        verbose_name_plural = '성분분류'
+        verbose_name = '성분 분류'
+        verbose_name_plural = '성분 분류'
         
 class Ingredient_unit(models.Model):
-    ingredient_unit = models.CharField(max_length=10, verbose_name="성분단위")
+    ingredient_unit = models.CharField(max_length=10, verbose_name="성분 단위")
     
     def __str__(self):
         return self.ingredient_unit 
         
     class Meta():
         db_table = 'ingredient_unit'
-        verbose_name = '성분단위'
-        verbose_name_plural = '성분단위'
+        verbose_name = '성분 단위'
+        verbose_name_plural = '성분 단위'
