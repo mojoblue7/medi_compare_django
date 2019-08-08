@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ingredient.views import index, IngredientListView, IngredientNameListView, \
-    IngredientUnitListView, IngredientClassListView
+    IngredientUnitListView, IngredientClassListView, IngredientRegisterForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('ingredient_name/list/', IngredientNameListView.as_view()),
     path('ingredient_unit/list/', IngredientUnitListView.as_view()),
     path('ingredient_class/list/', IngredientClassListView.as_view()),
+    path('ingredient/register/', IngredientRegisterForm.as_view()),
 ]
