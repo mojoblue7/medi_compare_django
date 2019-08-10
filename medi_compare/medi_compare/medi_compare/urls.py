@@ -14,16 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls import url
 from ingredient.views import index, IngredientListView, IngredientNameListView, \
-    IngredientUnitListView, IngredientClassListView, IngredientRegisterForm
+    IngredientUnitListView, IngredientClassListView, IngredientRegisterView, \
+        IngredientNameAutocomplete, IngredientUnitAutocomplete, IngredientClassAutocomplete
 
 urlpatterns = [
+    url(r'^ingredient-class-autocomplete/$', IngredientClassAutocomplete.as_view(create_field='ingredient_class'), name='ingredient-class-autocomplete-create',),
+    url(r'^ingredient-class-autocomplete/$', IngredientClassAutocomplete.as_view(), name='ingredient-class-autocomplete',),
+
+    url(r'^ingredient-name-autocomplete/$', IngredientNameAutocomplete.as_view(create_field='ingredient_name'), name='ingredient-name-autocomplete-create',),
+    url(r'^ingredient-name-autocomplete/$', IngredientNameAutocomplete.as_view(), name='ingredient-name-autocomplete',),
+
+    url(r'^ingredient-unit-autocomplete/$', IngredientUnitAutocomplete.as_view(create_field='ingredient_unit'), name='ingredient-unit-autocomplete-create',),
+    url(r'^ingredient-unit-autocomplete/$', IngredientUnitAutocomplete.as_view(), name='ingredient-unit-autocomplete',),
+
     path('admin/', admin.site.urls),
     path('', index),
     path('ingredient/list/', IngredientListView.as_view()),
     path('ingredient_name/list/', IngredientNameListView.as_view()),
     path('ingredient_unit/list/', IngredientUnitListView.as_view()),
     path('ingredient_class/list/', IngredientClassListView.as_view()),
-    path('ingredient/register/', IngredientRegisterForm.as_view()),
+    path('ingredient/register/', IngredientRegisterView.as_view()),
 ]

@@ -15,13 +15,45 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
         </script>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #aed581;">
             <a class="navbar-brand mb-1 h1" href="/">Medi Compare</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+
+                    <!-- Home -->
+                    {% if request.path == "/" %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownIngredientMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ingredient
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/ingredient/list/">성분 조회</a>
+                            <a class="dropdown-item" href="/ingredient_name/list/">성분명 조회</a>
+                            <a class="dropdown-item" href="/ingredient_unit/list/">성분 단위 조회</a>
+                            <a class="dropdown-item" href="/ingredient/register/">성분 등록</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
         </nav>
+
+        <!-- {{ request.path }} -->
         {% block header %}
         {% endblock %}
     </head>

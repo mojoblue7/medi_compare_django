@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+{% block script %}
+$(document).on('autocompleteLightInitialize', '[data-autocomplete-light-function=select2]', function() {
+// do select2 configuration on $(this)
+})
+{% endblock %}
 
 {% block contents %}
 
@@ -16,12 +22,23 @@
     <div class="col-12">
         <form method="POST" action=".">
             {% csrf_token %}
+            <!-- {{ form.as_p }} -->
             {% for field in form %}
+
+            {% if field.field.widget.input_type == 'select' %}
+
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}"> {{ field.label }} </label><br />
+                {{field}}
+            </div>
+            {% endif %}
+            {% if field.field.widget.input_type != 'select' %}
             <div class="form-group">
                 <label for="{{ field.id_for_label }}"> {{ field.label }} </label>
                 <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
-                    placeholder="{{ fidle.label }}" name="{{ fidle.name }}" />
+                    placeholder="{{ field.label }}" name="{{ field.name }}" />
             </div>
+            {% endif %}
 
             {% if field.errors %}
             <span style="color: red"> {{ field.errors }} </span>
@@ -32,4 +49,5 @@
         </form>
     </div>
 </div>
+{{ form.media }}
 {% endblock %}
