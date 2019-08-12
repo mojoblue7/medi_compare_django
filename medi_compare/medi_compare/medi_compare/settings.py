@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'dal_select2',
     'rest_framework',
     'ingredient',
+    # 'medicine',
+    'effect',
+    # 'company'
 ]
 
 MIDDLEWARE = [

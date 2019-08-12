@@ -19,6 +19,7 @@ from django.conf.urls import url
 from ingredient.views import index, IngredientListView, IngredientNameListView, \
     IngredientUnitListView, IngredientClassListView, IngredientRegisterView, \
         IngredientNameAutocomplete, IngredientUnitAutocomplete, IngredientClassAutocomplete
+from effect.views import EffectListView, EffectRegisterView, EffectAutocomplete
 
 urlpatterns = [
     url(r'^ingredient-class-autocomplete/$', IngredientClassAutocomplete.as_view(create_field='ingredient_class'), name='ingredient-class-autocomplete-create',),
@@ -30,11 +31,16 @@ urlpatterns = [
     url(r'^ingredient-unit-autocomplete/$', IngredientUnitAutocomplete.as_view(create_field='ingredient_unit'), name='ingredient-unit-autocomplete-create',),
     url(r'^ingredient-unit-autocomplete/$', IngredientUnitAutocomplete.as_view(), name='ingredient-unit-autocomplete',),
 
+    url(r'^effect-name-autocomplete/$', EffectAutocomplete.as_view(create_field='effect_name'), name='effect-name-autocomplete-create',),
+    url(r'^effect-name-autocomplete/$', EffectAutocomplete.as_view(), name='effect-name-autocomplete',),
+
     path('admin/', admin.site.urls),
     path('', index),
     path('ingredient/list/', IngredientListView.as_view()),
+    path('ingredient/register/', IngredientRegisterView.as_view()),
     path('ingredient_name/list/', IngredientNameListView.as_view()),
     path('ingredient_unit/list/', IngredientUnitListView.as_view()),
     path('ingredient_class/list/', IngredientClassListView.as_view()),
-    path('ingredient/register/', IngredientRegisterView.as_view()),
+    path('effect/list/', EffectListView.as_view()),
+    path('effect/register/', EffectRegisterView.as_view()),
 ]

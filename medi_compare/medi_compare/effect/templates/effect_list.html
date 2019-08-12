@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary" onclick="location.href='/effect/register'">효능 추가</button>
+    </div>
+    <div class="col-10">
+        <table class="table col-10 table-striped">
+            <thead class=" thead-dark">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">효능</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                {% for effect in effectList %}
+                <tr>
+                    <th scope="row">
+                        {{ effect.effect_id }}
+                    </th>
+                    <td scope="col">
+                        {{ effect.effect_name }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </ul>
+    </div>
+</div>
+{% endblock %}

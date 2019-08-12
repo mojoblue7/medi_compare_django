@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+$(document).on('autocompleteLightInitialize', '[data-autocomplete-light-function=select2]', function() {
+// do select2 configuration on $(this)
+})
+{% endblock %}
+
+{% block contents %}
+
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <h1>효능 등록</h1>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        {{ error }}
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {% for field in form %}
+
+            {% if field.field.widget.input_type == 'select' %}
+
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}"> {{ field.label }} </label><br />
+                {{field}}
+            </div>
+            {% endif %}
+            {% if field.field.widget.input_type != 'select' %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}"> {{ field.label }} </label>
+                <input type="{{ field.field.widget.input_type }}" class="form-control form-control-sm"
+                    id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}" />
+            </div>
+            {% endif %}
+
+            {% if field.errors %}
+            <span style="color: red"> {{ field.errors }} </span>
+            {% endif %}
+
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">효능 등록</button>
+        </form>
+    </div>
+</div>
+{{ form.media }}
+{% endblock %}
