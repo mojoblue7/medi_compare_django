@@ -27,8 +27,10 @@ class IngredientRegisterForm(forms.Form):
     )
     
     ingredient_volume = forms.IntegerField(
+        min_value=0,
         error_messages={
-            'required' : '성분함량을 입력해주세요.'
+            'required' : '성분함량을 입력해주세요.',
+            'min_value' : '0 이상의 값을 입력해주세요. '
         }, label = '성분 함량', 
     )
 

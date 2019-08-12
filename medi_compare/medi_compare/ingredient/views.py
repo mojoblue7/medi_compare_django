@@ -70,7 +70,7 @@ class IngredientRegisterView(FormView):
         with transaction.atomic():
             ingredient = Ingredient(
                 ingredient_name = form.cleaned_data['ingredient_name'],
-                ingredient_class = form.cleaned_data['ingredient_class'],
+                ingredient_classification = form.cleaned_data['ingredient_classification'],
                 ingredient_volume = form.cleaned_data['ingredient_volume'],
                 ingredient_unit = form.cleaned_data['ingredient_unit'],
                 ingredient_detail_content = form.cleaned_data['ingredient_detail_content']

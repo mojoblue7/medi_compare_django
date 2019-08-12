@@ -35,8 +35,8 @@ $(document).on('autocompleteLightInitialize', '[data-autocomplete-light-function
             {% if field.field.widget.input_type != 'select' %}
             <div class="form-group">
                 <label for="{{ field.id_for_label }}"> {{ field.label }} </label>
-                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
-                    placeholder="{{ field.label }}" name="{{ field.name }}" />
+                <input type="{{ field.field.widget.input_type }}" class="form-control form-control-sm"
+                    id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}" />
             </div>
             {% endif %}
 
